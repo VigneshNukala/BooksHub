@@ -41,12 +41,12 @@ const Login = () => {
         }
         
         const response = await fetch(url, options)
-        console.log(response)
         const data = await response.json()
+        
         if (response.ok === true) {
             onSubmitSuccess(data.jwtToken)
         }else {
-            console.log(data)
+
             onSubmitFailure(data)
         }
 

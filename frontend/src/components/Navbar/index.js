@@ -1,5 +1,6 @@
 import {useState} from 'react'
-
+import Cookies from 'js-cookie'
+import {Link, useNavigate} from 'react-router-dom'
 import loginlogo from '../../images/loginlogo.png'
 
 import './index.css'
@@ -7,6 +8,13 @@ import './index.css'
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
 
+    const navigate = useNavigate();
+    const onClickLogout = () => {
+        Cookies.remove('jwt_token');
+        navigate('/login');
+
+    }
+    
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
       };
@@ -14,10 +22,10 @@ const Navbar = () => {
     return (
         <nav className="flex items-center justify-between bg-white p-3">
             <img className="ml-32 h-10 w-32" src={loginlogo} alt="Login Logo"/>
-            <div className="hidden md:flex flex-row justify-around mr-32">
-                <h1>dw</h1>
-                <h1>dw</h1>
-                <h1>dw</h1>
+            <div className="w-1/5 hidden md:flex flex-row justify-between items-center mr-32">
+                <Link className="no-underline text-[#64748B]" to="/">Home</Link>
+                <Link className="no-underline text-[#64748B]" to="/book-hub">Bookshelves</Link>
+                <button type="button" className='bg-[#0284C7] text-white text-sm p-2 pr-5 pl-5 rounded' onClick={onClickLogout}>Logout</button>
             </div>
       
             <div className="md:hidden">

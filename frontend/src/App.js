@@ -2,6 +2,7 @@ import {BrowserRouter,Routes, Route} from 'react-router-dom'
 
 import Login from './components/Login';
 import Home from './components/Home';
+import Bookshelves from './components/Bookshelves';
 
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/login" Component={Login} />
         <Route exact path="/" Component={Home} />
+        <Route exact path="/book-hub" Component={Bookshelves} />
       </Routes>
     </BrowserRouter>
   )
